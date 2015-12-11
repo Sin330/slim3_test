@@ -8,15 +8,19 @@ import com.google.appengine.api.datastore.Key;
 
 import biz.e_zero.slim3_test.meta.MemoMeta;
 import biz.e_zero.slim3_test.model.Memo;
+import biz.e_zero.slim3_test.service.dao.DaoBaseEx;
 
-public class MemoService {
-        /**
+// <DaoBaseEx>クラスを継承
+public class MemoService  extends DaoBaseEx<Memo>{
+    /**
      * Get Memo object by key from DS.
      * @param key
      * @return Memo
      */
     public Memo get(Key key) {
-        return Datastore.getOrNull(MemoMeta.get(), key);
+        // Datastoreのメソッドからsuper classのメソッドに変更(P5)
+        // return Datastore.getOrNull(MemoMeta.get(), key);
+        return super.getOrNull(key);
     }
     
     /**
@@ -25,7 +29,10 @@ public class MemoService {
      */
     public List<Memo> list() {
         MemoMeta m = MemoMeta.get();
-        return Datastore.query(m).sort(m.updateDate.desc).asList();
+        // Datastoreのメソッドからsuper classのメソッドに変更(P5)
+        // return Datastore.query(m).sort(m.updateDate.desc).asList();
+        List<Key> keys = Datastore.query(m).sort(m.updateDate.desc).asKeyList();
+        return super.get(keys);
     }
     
     /**
@@ -34,7 +41,9 @@ public class MemoService {
      */
     public void insert(Memo memo) {
         memo.setKey(Datastore.allocateId(MemoMeta.get()));
-        Datastore.put(memo);
+        // Datastoreのメソッドからsuper classのメソッドに変更(P5)
+        // Datastore.put(memo);
+        super.put(memo);
     }
 
     /**
@@ -42,7 +51,9 @@ public class MemoService {
      * @param memo
      */
     public void update(Memo memo) {
-        Datastore.put(memo);
+        // Datastoreのメソッドからsuper classのメソッドに変更(P5)
+        // Datastore.put(memo);
+        super.put(memo);
     }
     
     /**
@@ -50,7 +61,9 @@ public class MemoService {
      * @param key
      */
     public void delete(Key key) {
-        Datastore.delete(key);
+        // Datastoreのメソッドからsuper classのメソッドに変更(P5)
+        // Datastore.delete(key);
+        super.delete(key);
     }
     
     public void upsert(Memo memo) {

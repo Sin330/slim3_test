@@ -1,6 +1,6 @@
 package biz.e_zero.slim3_test.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-10-11 10:20:58")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-12-06 11:42:28")
 /** */
 public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.slim3_test.model.Memo> {
 

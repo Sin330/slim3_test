@@ -1,2 +1,5 @@
 *.class
 classes/*
+
+*.jar
+local_db.bin

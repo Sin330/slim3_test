@@ -30,7 +30,7 @@
 							<tr>
 								<td><a href="edit?id=${f:h(e.key.id)}">${f:h(e.title)}</a></td>
 								<td>${f:h(e.memo)}</td>
-								<td>${f:h(e.updateDate)}</td>
+								<td>${f:h(e.updateDateString)}</td>
 								<td><a href="delete?id=${f:h(e.key.id)}" class="btn btn-st btn-default">削除</a></td>
 							</tr>
 						</c:forEach>

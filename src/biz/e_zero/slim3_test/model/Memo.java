@@ -1,6 +1,7 @@
 package biz.e_zero.slim3_test.model;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.google.appengine.api.datastore.Key;
@@ -9,7 +10,7 @@ import org.slim3.datastore.Attribute;
 import org.slim3.datastore.Model;
 
 @Model(schemaVersion = 1)
-public class Memo implements Serializable {
+public class Memo implements Serializable, Slim3Model {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +42,10 @@ public class Memo implements Serializable {
 
     public Date getUpdateDate() {
         return updateDate;
+    }
+    
+    public String getUpdateDateString() {
+        return new SimpleDateFormat("yyyy/MM/dd kk:mm:ss").format(updateDate);
     }
 
     public void setUpdateDate(Date updateDate) {
