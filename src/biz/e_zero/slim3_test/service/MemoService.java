@@ -5,6 +5,7 @@ import java.util.List;
 import org.slim3.datastore.Datastore;
 
 import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.users.UserServiceFactory;
 
 import biz.e_zero.slim3_test.meta.MemoMeta;
 import biz.e_zero.slim3_test.model.Memo;
@@ -31,7 +32,7 @@ public class MemoService  extends DaoBaseEx<Memo>{
         MemoMeta m = MemoMeta.get();
         // Datastoreのメソッドからsuper classのメソッドに変更(P5)
         // return Datastore.query(m).sort(m.updateDate.desc).asList();
-        List<Key> keys = Datastore.query(m).sort(m.updateDate.desc).asKeyList();
+        List<Key> keys = Datastore.query(m).filter(m.userId.equal(getUserId())).sort(m.updateDate.desc).asKeyList();
         return super.get(keys);
     }
     
@@ -41,6 +42,7 @@ public class MemoService  extends DaoBaseEx<Memo>{
      */
     public void insert(Memo memo) {
         memo.setKey(Datastore.allocateId(MemoMeta.get()));
+        memo.setUserId(getUserId());
         // Datastoreのメソッドからsuper classのメソッドに変更(P5)
         // Datastore.put(memo);
         super.put(memo);
@@ -53,6 +55,7 @@ public class MemoService  extends DaoBaseEx<Memo>{
     public void update(Memo memo) {
         // Datastoreのメソッドからsuper classのメソッドに変更(P5)
         // Datastore.put(memo);
+        memo.setUserId(getUserId());
         super.put(memo);
     }
     
@@ -72,5 +75,9 @@ public class MemoService  extends DaoBaseEx<Memo>{
         } else {
             update(memo);
         }
+    }
+    
+    public String getUserId() {
+        return UserServiceFactory.getUserService().getCurrentUser().getUserId();
     }
 }

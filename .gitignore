@@ -1,5 +1,15 @@
+# eclipse settings
+.settings/
+.classpath
+.project
+
+# Java class files
 *.class
 classes/*
 
 *.jar
 local_db.bin
+
+.externalToolBuilders
+war/ktrwjr
+

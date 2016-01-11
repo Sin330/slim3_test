@@ -38,6 +38,7 @@
 				</table>
 			</div>
 			<a href="edit" class="btn btn-lg btn-default">追加</a>
+			<a href="<%= (String)request.getAttribute("logout_url") %>">ログアウト</a>
 		</div>
 	</div>
 </body>

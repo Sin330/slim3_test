@@ -24,6 +24,10 @@ public class Memo implements Serializable, Slim3Model {
     private String memo;
     private Date updateDate;
 
+    // userId‚Ì’Ç‰Á(P6)
+    @Attribute(unindexed = false)
+    private String userId;
+
     public String getTitle() {
         return title;
     }
@@ -90,6 +94,15 @@ public class Memo implements Serializable, Slim3Model {
         this.version = version;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+    
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+    
+    
     @Override
     public int hashCode() {
         final int prime = 31;

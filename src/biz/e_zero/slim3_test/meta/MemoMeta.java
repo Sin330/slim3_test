@@ -1,6 +1,6 @@
 package biz.e_zero.slim3_test.meta;
 
-//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2015-12-06 11:42:28")
+//@javax.annotation.Generated(value = { "slim3-gen", "@VERSION@" }, date = "2016-01-10 23:32:24")
 /** */
 public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.slim3_test.model.Memo> {
 
@@ -15,6 +15,9 @@ public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.sli
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<biz.e_zero.slim3_test.model.Memo, java.util.Date> updateDate = new org.slim3.datastore.CoreAttributeMeta<biz.e_zero.slim3_test.model.Memo, java.util.Date>(this, "updateDate", "updateDate", java.util.Date.class);
+
+    /** */
+    public final org.slim3.datastore.StringAttributeMeta<biz.e_zero.slim3_test.model.Memo> userId = new org.slim3.datastore.StringAttributeMeta<biz.e_zero.slim3_test.model.Memo>(this, "userId", "userId");
 
     /** */
     public final org.slim3.datastore.CoreAttributeMeta<biz.e_zero.slim3_test.model.Memo, java.lang.Long> version = new org.slim3.datastore.CoreAttributeMeta<biz.e_zero.slim3_test.model.Memo, java.lang.Long>(this, "version", "version", java.lang.Long.class);
@@ -40,6 +43,7 @@ public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.sli
         model.setMemo((java.lang.String) entity.getProperty("memo"));
         model.setTitle((java.lang.String) entity.getProperty("title"));
         model.setUpdateDate((java.util.Date) entity.getProperty("updateDate"));
+        model.setUserId((java.lang.String) entity.getProperty("userId"));
         model.setVersion((java.lang.Long) entity.getProperty("version"));
         return model;
     }
@@ -56,6 +60,7 @@ public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.sli
         entity.setProperty("memo", m.getMemo());
         entity.setProperty("title", m.getTitle());
         entity.setProperty("updateDate", m.getUpdateDate());
+        entity.setProperty("userId", m.getUserId());
         entity.setProperty("version", m.getVersion());
         entity.setProperty("slim3.schemaVersion", 1);
         return entity;
@@ -135,6 +140,10 @@ public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.sli
             writer.setNextPropertyName("updateDate");
             encoder0.encode(writer, m.getUpdateDate());
         }
+        if(m.getUserId() != null){
+            writer.setNextPropertyName("userId");
+            encoder0.encode(writer, m.getUserId());
+        }
         if(m.getVersion() != null){
             writer.setNextPropertyName("version");
             encoder0.encode(writer, m.getVersion());
@@ -155,6 +164,8 @@ public final class MemoMeta extends org.slim3.datastore.ModelMeta<biz.e_zero.sli
         m.setTitle(decoder0.decode(reader, m.getTitle()));
         reader = rootReader.newObjectReader("updateDate");
         m.setUpdateDate(decoder0.decode(reader, m.getUpdateDate()));
+        reader = rootReader.newObjectReader("userId");
+        m.setUserId(decoder0.decode(reader, m.getUserId()));
         reader = rootReader.newObjectReader("version");
         m.setVersion(decoder0.decode(reader, m.getVersion()));
         return m;
